@@ -252,19 +252,27 @@ namespace Baconit.ContentPanels.Panels
             // have case sensitive urls.
             string postUrlLower = postUrl.ToLower();
 
-            // Check for imgur gifv
-            if (postUrlLower.Contains(".gifv") && postUrlLower.Contains("imgur.com"))
+            if (postUrlLower.Contains("imgur.com"))
             {
-                // If the link is imgur, replace the .gifv with a .mp4 and we should get a video back.
-                return postUrl.Replace(".gifv", ".mp4");
+                // Check for imgur gifv
+                if (postUrlLower.Contains(".gifv"))
+                {
+                    // If the link is imgur, replace the .gifv with a .mp4 and we should get a video back.
+                    return postUrl.Replace(".gifv", ".mp4");
+                }
+                // Check for imgur gif
+                if (postUrlLower.Contains(".gif"))
+                {
+                    // If the link is imgur, replace the .gifv with a .mp4 and we should get a video back.
+                    return postUrl.Replace(".gif", ".mp4");
+                }
+                // Check for imgur webm
+                if (postUrlLower.Contains(".webm"))
+                {
+                    // If the link is imgur, replace the .gifv with a .mp4 and we should get a video back.
+                    return postUrl.Replace(".webm", ".mp4");
+                }
             }
-            // Check for imgur gif
-            if (postUrlLower.Contains(".gif") && postUrlLower.Contains("imgur.com"))
-            {
-                // If the link is imgur, replace the .gifv with a .mp4 and we should get a video back.
-                return postUrl.Replace(".gif", ".mp4");
-            }
-
             return String.Empty;
         }
 
